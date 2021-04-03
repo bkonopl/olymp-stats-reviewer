@@ -12,12 +12,6 @@ export const Search: React.FC = () => {
 
   const handleFocus = () => setFocus(true)
 
-  useEffect(() => {
-    if (focus) {
-      setTimeout(() => setLoading(true), 900)
-    }
-  }, [focus])
-
   const [participants, setParticipants] = useState<IParticipant[]>([])
 
   const loadParticipants = useCallback(
@@ -32,9 +26,11 @@ export const Search: React.FC = () => {
   )
 
   useEffect(() => {
-    setLoading(true)
-    loadParticipants(search)
-  }, [search, loadParticipants])
+    if (focus) {
+      setLoading(true)
+      loadParticipants(search)
+    }
+  }, [search, loadParticipants, focus])
 
   return (
     <ModuleLayout>

@@ -6,7 +6,6 @@ import { Contribute, FAQ, Home, Profile, Search } from './modules'
 import { Providers } from './providers'
 
 import 'src/styles/index.css'
-import 'src/styles/reset.css'
 
 ReactDOM.render(
   <Providers>

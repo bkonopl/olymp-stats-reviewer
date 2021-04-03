@@ -1,2 +1,5 @@
 export * from './Profile'
 export * from './Search'
+export * from './Home'
+export * from './FAQ'
+export * from './Contribute'

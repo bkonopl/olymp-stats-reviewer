@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -34,21 +34,24 @@ export const Header: React.FC = () => {
 
           <Box
             alignItems="center"
-            display={{ sm: show ? 'block' : 'none', md: 'flex' }}
+            display={[show ? 'block' : 'none', show ? 'block' : 'none', 'flex', 'flex']}
             flexGrow={1}
-            width={{ sm: 'full', md: 'auto' }}
+            width={['full', 'full', 'auto', 'auto']}
           >
-            <Box fontSize="xl" ml="20px">
+            <Box fontSize="xl" ml={[0, 0, '20px', '20px']} mt={['20px', '20px', 0, 0]}>
               <NavLink to="/faq">FAQ</NavLink>
             </Box>
-            <Box fontSize="xl" ml="20px">
+            <Box fontSize="xl" ml={[0, 0, '20px', '20px']} mt={['20px', '20px', 0, 0]}>
               <NavLink to="/contribute">Contribute</NavLink>
             </Box>
           </Box>
 
-          <Box display={{ sm: show ? 'block' : 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
+          <Box
+            display={[show ? 'block' : 'none', show ? 'block' : 'none', 'block', 'block']}
+            mt={['20px', '20px', 0, 0]}
+          >
             <Button bg="transparent" border="1px">
-              Search
+              <NavLink to="/search">Search</NavLink>
             </Button>
           </Box>
         </Flex>

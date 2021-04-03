@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios'
 import { IParticipant, IParticipantMeta } from 'src/types'
 
-interface IParticipantAPI {
+export interface IParticipantAPI {
   getParticipants: (search: string) => Promise<IParticipantMeta[]>
   getParticipantById: (id: number) => Promise<IParticipant>
 }
@@ -29,9 +29,33 @@ const mockPart: IParticipant = {
   name: 'Игорь Макеенко',
   olympiads: [
     {
-      name: 'Республиканская олимпиада по информатике 2019',
+      name: 'BELOI 2019',
       rate: 1,
-      degree: 'Диплом третьей степени',
+      degree: '3rd diploma',
+      place: '49 из 123',
+    },
+    {
+      name: 'BELOI 2020',
+      rate: 5,
+      degree: '2nd diploma',
+      place: '49 из 123',
+    },
+    {
+      name: 'BELOI 2021',
+      rate: 20,
+      degree: '1st diploma',
+      place: '49 из 123',
+    },
+    {
+      name: 'BELOI 2022',
+      rate: 15,
+      degree: '1st diploma',
+      place: '49 из 123',
+    },
+    {
+      name: 'BELOI 2023',
+      rate: 4,
+      degree: '1st diploma',
       place: '49 из 123',
     },
   ],
@@ -40,11 +64,9 @@ const mockPart: IParticipant = {
 export const ParticipantAPI = (client: AxiosInstance): IParticipantAPI => {
   return {
     async getParticipants(search: string) {
-      console.log(search)
       return new Promise<IParticipantMeta[]>((resolve) => setTimeout(() => resolve(mockMeta), 500))
     },
     async getParticipantById(id: number) {
-      console.log(id)
       return new Promise<IParticipant>((resolve) => setTimeout(() => resolve(mockPart), 500))
     },
   }

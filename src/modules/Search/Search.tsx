@@ -16,6 +16,7 @@ export const Search: React.FC = () => {
 
   const [participants, setParticipants] = useState<IParticipantMeta[]>([])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const loadParticipants = useCallback(
     debounce((search) => {
       const client = createClient()

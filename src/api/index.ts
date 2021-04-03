@@ -2,9 +2,11 @@ import axios from 'axios'
 
 import { config } from '../config'
 
-import { ParticipantAPI } from './participant'
+import { IParticipantAPI, ParticipantAPI } from './participant'
 
-export const createClient = () => {
+type ICreateClient = IParticipantAPI
+
+export const createClient = (): ICreateClient => {
   const client = axios.create({ baseURL: config.BASE_URL })
   return {
     ...ParticipantAPI(client),

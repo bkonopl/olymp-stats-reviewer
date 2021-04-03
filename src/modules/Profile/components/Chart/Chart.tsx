@@ -1,5 +1,6 @@
-import { ResponsiveLine } from '@nivo/line'
+import { PointMouseHandler, ResponsiveLine } from '@nivo/line'
 import React from 'react'
+import { useCatchModal } from 'src/providers'
 import { IParticipant } from 'src/types'
 
 import { chartSerializeOlympiadInfo } from './helpers'
@@ -9,6 +10,22 @@ interface Props {
 }
 
 export const Chart: React.FC<Props> = ({ data }) => {
+  const { showItems } = useCatchModal()
+
+  const handlePointClick: PointMouseHandler = ({ index }) => {
+    const olympiad = data[index]
+    const items = [
+      { key: 'Olympiad:', value: olympiad.name },
+      { key: 'Place:', value: olympiad.place },
+      { key: 'Result:', value: olympiad.degree },
+      { key: 'Conditional Rate', value: String(olympiad.rate) },
+    ]
+
+    if (olympiad.date) items.push({ key: 'Date', value: olympiad.date })
+
+    showItems(items)
+  }
+
   return (
     <ResponsiveLine
       useMesh
@@ -18,7 +35,7 @@ export const Chart: React.FC<Props> = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legendOffset: 36,
+        legendOffset: 0,
         legendPosition: 'middle',
       }}
       axisLeft={{
@@ -71,7 +88,7 @@ export const Chart: React.FC<Props> = ({ data }) => {
       xScale={{ type: 'point' }}
       yFormat=" >-.2f"
       yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-      onClick={(event) => console.log(event)}
+      onClick={handlePointClick}
     />
   )
 }

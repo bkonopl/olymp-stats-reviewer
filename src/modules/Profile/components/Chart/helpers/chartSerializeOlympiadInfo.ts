@@ -10,7 +10,7 @@ export const chartSerializeOlympiadInfo = (data: IParticipant['olympiads']): Ser
   })
   return [
     {
-      id: 'Olympiad Perfomance',
+      id: 'Olympiads',
       color: 'hsl(324, 70%, 50%)',
       data: toXY,
     },

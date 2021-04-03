@@ -1,4 +1,3 @@
-import { useDisclosure } from '@chakra-ui/react'
 import React, { useContext, useState } from 'react'
 
 import { CatchModal } from './components'
@@ -22,7 +21,7 @@ export const useCatchModal = (): ICatchModalContext => {
 export const CatchModalProvider: React.FC = ({ children }) => {
   const [isOpen, setOpen] = useState(false)
   const [items, setItems] = useState<{ key: string; value: string }[]>([])
-  const { onClose } = useDisclosure()
+  const onClose = () => setOpen(false)
 
   const showItems = (items: { key: string; value: string }[]) => {
     setItems(items)

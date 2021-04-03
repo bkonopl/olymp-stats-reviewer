@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios'
 import { IParticipant } from 'src/types'
 
 interface IParticipantAPI {
-  getParticipants: () => Promise<IParticipant[]>
+  getParticipants: (search: string) => Promise<IParticipant[]>
 }
 
 const mockData: IParticipant[] = [
@@ -57,9 +57,9 @@ const mockData: IParticipant[] = [
 ]
 
 export const ParticipantAPI = (client: AxiosInstance): IParticipantAPI => {
-  console.log(client)
   return {
-    async getParticipants() {
+    async getParticipants(search: string) {
+      console.log(search)
       return new Promise<IParticipant[]>((resolve) => setTimeout(() => resolve(mockData), 200))
     },
   }

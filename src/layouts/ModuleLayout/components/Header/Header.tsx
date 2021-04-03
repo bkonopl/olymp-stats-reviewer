@@ -7,7 +7,6 @@ import { Container } from '../Container'
 export const Header: React.FC = () => {
   const [show, setShow] = useState(false)
   const handleToggle = () => setShow(!show)
-
   return (
     <Box>
       <Container>
@@ -20,8 +19,8 @@ export const Header: React.FC = () => {
           wrap="wrap"
         >
           <Flex align="center" mr={5}>
-            <Heading as="h1" letterSpacing="-.1rem" size="lg">
-              Olymp Stats
+            <Heading as="h1" cursor="pointer" letterSpacing="-.1rem" size="lg">
+              <NavLink to="/search">Olymp Stats</NavLink>
             </Heading>
           </Flex>
 

@@ -3,7 +3,9 @@ import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useState } from 'react'
 import { createClient } from 'src/api'
 import { ModuleLayout } from 'src/layouts'
-import { IParticipant } from 'src/types'
+import { IParticipantMeta } from 'src/types'
+
+import { ParticipantCard } from './components'
 
 export const Search: React.FC = () => {
   const [loading, setLoading] = useState(false)
@@ -12,7 +14,7 @@ export const Search: React.FC = () => {
 
   const handleFocus = () => setFocus(true)
 
-  const [participants, setParticipants] = useState<IParticipant[]>([])
+  const [participants, setParticipants] = useState<IParticipantMeta[]>([])
 
   const loadParticipants = useCallback(
     debounce((search) => {
@@ -28,6 +30,7 @@ export const Search: React.FC = () => {
   useEffect(() => {
     if (focus) {
       setLoading(true)
+      setParticipants([])
       loadParticipants(search)
     }
   }, [search, loadParticipants, focus])
@@ -52,6 +55,9 @@ export const Search: React.FC = () => {
             <Spinner height="100px" width="100px" />
           </Flex>
         )}
+        {participants.map((participant) => (
+          <ParticipantCard {...participant} key={participant.id} />
+        ))}
       </Box>
     </ModuleLayout>
   )

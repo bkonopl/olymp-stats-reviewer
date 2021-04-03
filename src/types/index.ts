@@ -6,8 +6,12 @@ export interface IOlympiad {
   date?: string // дата если возможно узнать или не возврашать
 }
 
-export interface IParticipant {
+export interface IParticipantMeta {
   id: number // уникальный идентификатор
+  name: string
+}
+
+export interface IParticipant {
   name: string // Сергей Пискун
   olympiads: IOlympiad[]
 }

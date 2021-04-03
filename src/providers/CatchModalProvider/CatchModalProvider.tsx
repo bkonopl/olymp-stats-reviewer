@@ -1,5 +1,5 @@
 import { useDisclosure } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { CatchModal } from './components'
 
@@ -9,9 +9,15 @@ interface IActions {
   showItems: (items: { key: string; value: string }[]) => void
 }
 
-type ICatchModal = IValues & IActions
+type ICatchModalContext = IValues & IActions
 
-const CatchModalContext = React.createContext<IActions & IValues>({} as ICatchModal)
+const CatchModalContext = React.createContext<IActions & IValues>({} as ICatchModalContext)
+
+export const useCatchModal = (): ICatchModalContext => {
+  const context = useContext(CatchModalContext)
+  if (!context) throw new Error('[useCatchModal] Outside the provider')
+  return context
+}
 
 export const CatchModalProvider: React.FC = ({ children }) => {
   const [isOpen, setOpen] = useState(false)

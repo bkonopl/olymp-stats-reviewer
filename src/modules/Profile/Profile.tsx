@@ -1,4 +1,4 @@
-import { Box, Flex, Spinner } from '@chakra-ui/react'
+import { Box, Flex, Spinner, Heading } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { createClient } from 'src/api'
@@ -34,8 +34,10 @@ export const Profile: React.FC = () => {
 
   return (
     <ModuleLayout>
-      <Box>{participant.name}</Box>
-      <Box className="chart" height="600px" width="100%">
+      <Box marginY="40px" textAlign="center">
+        <Heading>{participant.name}</Heading>
+      </Box>
+      <Box className="chart" height="600px" marginLeft="-40px" width="calc(100% + 150px)">
         <Chart data={participant.olympiads} />
       </Box>
     </ModuleLayout>

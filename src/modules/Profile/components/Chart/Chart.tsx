@@ -18,7 +18,7 @@ export const Chart: React.FC<Props> = ({ data }) => {
       { key: 'Olympiad:', value: olympiad.name },
       { key: 'Place:', value: olympiad.place },
       { key: 'Result:', value: olympiad.degree },
-      { key: 'Conditional Rate', value: String(olympiad.rate) },
+      { key: 'Conditional Rate:', value: String(olympiad.rate) },
     ]
 
     if (olympiad.date) items.push({ key: 'Date', value: olympiad.date })

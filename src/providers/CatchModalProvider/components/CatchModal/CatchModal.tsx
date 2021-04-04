@@ -1,4 +1,13 @@
-import { Box, Flex, Modal, ModalContent, ModalOverlay, ModalProps, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  ModalProps,
+  Text,
+  Button,
+} from '@chakra-ui/react'
 import React from 'react'
 
 interface ICatchModal extends Omit<ModalProps, 'children'> {
@@ -17,6 +26,9 @@ export const CatchModal: React.FC<ICatchModal> = ({ items, ...props }) => {
               <Text>{value}</Text>
             </Flex>
           ))}
+          <Flex justifyContent="space-between" mt="20px" width="100%">
+            <Button onClick={props.onClose}>Close</Button>
+          </Flex>
         </Box>
       </ModalContent>
     </Modal>

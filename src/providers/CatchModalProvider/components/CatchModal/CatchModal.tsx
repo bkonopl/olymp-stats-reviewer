@@ -26,8 +26,10 @@ export const CatchModal: React.FC<ICatchModal> = ({ items, ...props }) => {
               <Text>{value}</Text>
             </Flex>
           ))}
-          <Flex justifyContent="space-between" mt="20px" width="100%">
-            <Button onClick={props.onClose}>Close</Button>
+          <Flex mt="20px" width="100%">
+            <Button colorScheme="twitter" width="100%" onClick={props.onClose}>
+              Close
+            </Button>
           </Flex>
         </Box>
       </ModalContent>
